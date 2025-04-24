@@ -114,9 +114,9 @@ print("Average cosine similarities between categories:")
 print(avg_sim_matrix)
 
 
-"""# **Displaying Embedding Table**"""
+# """# **Displaying Embedding Table**"""
 
-# dists = [[(e1 - e2).norm().item() for e2 in embeddings] for e1 in embeddings]
-# print(pd.DataFrame(dists, columns=names, index=names))
+# # dists = [[(e1 - e2).norm().item() for e2 in embeddings] for e1 in embeddings]
+# # print(pd.DataFrame(dists, columns=names, index=names))
 
 sys.stdout.close()
