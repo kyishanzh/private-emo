@@ -1,14 +1,9 @@
 Running on device: cpu
-                            Angelina Jolie  Angelina Jolie  Angelina Jolie Baseline  Angelina Jolie Baseline  Brad Pitt  Brad Pitt  Brad Pitt Baseline  Brad Pitt Baseline  Denzel Washington  Denzel Washington  Denzel Washington Baseline  Denzel Washington Baseline
-Angelina Jolie                    0.000000        0.533375                 0.759223                 0.713407   1.541291   1.614881            1.591288            1.557696           1.440712           1.414761                    1.432318                    1.475020
-Angelina Jolie                    0.533375        0.000000                 0.702463                 0.657955   1.505070   1.573862            1.558234            1.533765           1.421537           1.388010                    1.413069                    1.476559
-Angelina Jolie Baseline           0.759223        0.702463                 0.000000                 0.719874   1.488806   1.540657            1.506830            1.522232           1.419707           1.365953                    1.360945                    1.437506
-Angelina Jolie Baseline           0.713407        0.657955                 0.719874                 0.000000   1.493404   1.500409            1.543857            1.510519           1.365354           1.366223                    1.474228                    1.508457
-Brad Pitt                         1.541291        1.505070                 1.488806                 1.493404   0.000000   0.522224            0.578446            0.514802           1.417413           1.328137                    1.314902                    1.344455
-Brad Pitt                         1.614881        1.573862                 1.540657                 1.500409   0.522224   0.000000            0.604567            0.539293           1.315829           1.236953                    1.282193                    1.295371
-Brad Pitt Baseline                1.591288        1.558234                 1.506830                 1.543857   0.578446   0.604567            0.000000            0.534045           1.356950           1.297781                    1.353724                    1.314949
-Brad Pitt Baseline                1.557696        1.533765                 1.522232                 1.510519   0.514802   0.539293            0.534045            0.000000           1.384922           1.261300                    1.346637                    1.313761
-Denzel Washington                 1.440712        1.421537                 1.419707                 1.365354   1.417413   1.315829            1.356950            1.384922           0.000000           0.548772                    0.893157                    0.808278
-Denzel Washington                 1.414761        1.388010                 1.365953                 1.366223   1.328137   1.236953            1.297781            1.261300           0.548772           0.000000                    0.768939                    0.515541
-Denzel Washington Baseline        1.432318        1.413069                 1.360945                 1.474228   1.314902   1.282193            1.353724            1.346637           0.893157           0.768939                    0.000000                    0.638739
-Denzel Washington Baseline        1.475020        1.476559                 1.437506                 1.508457   1.344455   1.295371            1.314949            1.313761           0.808278           0.515541                    0.638739                    0.000000
+Average cosine similarities between categories:
+                           Angelina Jolie Angelina Jolie Baseline Brad Pitt Brad Pitt Baseline Denzel Washington Denzel Washington Baseline
+Angelina Jolie                   0.928878                0.748534 -0.215712          -0.217393         -0.003067                  -0.050526
+Angelina Jolie Baseline          0.748534                0.870445 -0.133956          -0.156611          0.048481                  -0.045923
+Brad Pitt                       -0.215712               -0.133956  0.931821           0.843005          0.120692                   0.142684
+Brad Pitt Baseline              -0.217393               -0.156611  0.843005           0.928699          0.120696                   0.112368
+Denzel Washington               -0.003067                0.048481  0.120692           0.120696          0.924712                   0.711488
+Denzel Washington Baseline      -0.050526               -0.045923  0.142684           0.112368          0.711488                   0.898003

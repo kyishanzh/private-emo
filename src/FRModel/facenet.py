@@ -32,6 +32,8 @@ from torchvision import datasets
 import numpy as np
 import pandas as pd
 import sys
+from collections import defaultdict
+import torch.nn.functional as F
 
 ### Adjust how much output to print here
 pd.set_option('display.max_columns', None)
@@ -89,10 +91,32 @@ embeddings = resnet(aligned).detach().cpu()
 
 """# **Compute Average Over Category**"""
 
+# Group embeddings by class
+class_to_embeddings = defaultdict(list)
+for name, embedding in zip(names, embeddings):
+    class_to_embeddings[name].append(embedding)
+
+# Compute average cosine similarities between each pair of classes
+categories = list(class_to_embeddings.keys())
+avg_sim_matrix = pd.DataFrame(index=categories, columns=categories)
+
+for i, name1 in enumerate(categories):
+    for j, name2 in enumerate(categories):
+        emb1 = torch.stack(class_to_embeddings[name1])
+        emb2 = torch.stack(class_to_embeddings[name2])
+        # Compute cosine similarity matrix between all pairs
+        sim_matrix = F.cosine_similarity(emb1[:, None], emb2[None, :], dim=-1)
+        avg_sim = sim_matrix.mean().item()
+        avg_sim_matrix.loc[name1, name2] = avg_sim
+
+# Print full matrix
+print("Average cosine similarities between categories:")
+print(avg_sim_matrix)
+
 
 """# **Displaying Embedding Table**"""
 
-dists = [[(e1 - e2).norm().item() for e2 in embeddings] for e1 in embeddings]
-print(pd.DataFrame(dists, columns=names, index=names))
+# dists = [[(e1 - e2).norm().item() for e2 in embeddings] for e1 in embeddings]
+# print(pd.DataFrame(dists, columns=names, index=names))
 
 sys.stdout.close()
