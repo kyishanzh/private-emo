@@ -1,0 +1,19 @@
+name: cv-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11  # or your preferred version
+  - pytorch>=1.8
+  - torchvision
+  - ftfy
+  - regex
+  - tqdm
+  - pillow
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - pip
+  - pip:
+      - git+https://github.com/openai/CLIP.git
