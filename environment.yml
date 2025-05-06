@@ -1,10 +1,11 @@
 name: cv-env
 channels:
+  - apple
   - conda-forge
   - defaults
 dependencies:
-  - python=3.11  # or your preferred version
-  - pytorch>=1.8
+  - python=3.10  # Downgrade to 3.10 for better compatibility
+  - pytorch
   - torchvision
   - ftfy
   - regex
@@ -15,5 +16,10 @@ dependencies:
   - scipy
   - matplotlib
   - pip
+  - opencv  # Just opencv from conda-forge
+  - dlib    # Just dlib from conda-forge
   - pip:
       - git+https://github.com/openai/CLIP.git
+  - mediapipe
+  - sklearn
+  - scikit-image

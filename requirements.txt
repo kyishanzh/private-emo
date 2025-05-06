@@ -1,7 +1,0 @@
-torch>=1.8
-torchvision
-ftfy
-regex
-tqdm
-git+https://github.com/openai/CLIP.git
-Pillow
