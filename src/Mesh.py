@@ -2,10 +2,12 @@ import cv2
 import numpy as np
 import mediapipe as mp
 from PrivatizationRunner import PrivatizationRunner
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
-out_dir = "Celebrity_Mesh/Will Smith"
-in_dir = "CelebrityFacesDataset/Will Smith"
+out_dir = "data/mesh/test"
+in_dir = "data/real/test"
 
 def mesh(image):
 # Initialize MediaPipe FaceMesh

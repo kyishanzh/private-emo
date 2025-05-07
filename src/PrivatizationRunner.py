@@ -33,7 +33,7 @@ class PrivatizationRunner():
                     out_img = method(out_img)
                 # handle output file path stuff
                 rel_path = file_path.relative_to(self.in_path)
-                new_filename = f"{file_path.stem}_out{file_path.suffix}"
+                new_filename = f"{file_path.stem}_privatized{file_path.suffix}"
                 output_subdir = self.out_path / rel_path.parent
                 output_subdir.mkdir(parents=True, exist_ok=True)
                 output_file = output_subdir / new_filename
@@ -43,6 +43,8 @@ class PrivatizationRunner():
                     cv2.imwrite(str(output_file), out_img)
                 else:
                     out_img.save(output_file)
+
+                os.remove(file_path)
                 if debug:
                     print(f"Processed and saved: {output_file}")
 
