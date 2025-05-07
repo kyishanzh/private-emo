@@ -4,8 +4,8 @@ import mediapipe as mp
 from PrivatizationRunner import PrivatizationRunner
 
 
-out_dir = "mesh_test"
-in_dir = "test_small_dataset"
+out_dir = "Celebrity_Mesh/Will Smith"
+in_dir = "CelebrityFacesDataset/Will Smith"
 
 def mesh(image):
 # Initialize MediaPipe FaceMesh
@@ -29,19 +29,23 @@ def mesh(image):
         return cv2.applyColorMap(np.array([[index]], dtype=np.uint8), color_map)[0][0].tolist()
 
     # Draw landmarks with unique colors
+    # Fill landmarks with unique colors directly into the array
     if results.multi_face_landmarks:
         # Process the first face (if multiple faces exist)
         face_landmarks = results.multi_face_landmarks[0]
         landmarks = face_landmarks.landmark
 
-    for i, landmark in enumerate(landmarks):
-        x, y = int(landmark.x * w), int(landmark.y * h)
+        for i, landmark in enumerate(landmarks):
+            # Get x, y coordinates
+            x, y = int(landmark.x * w), int(landmark.y * h)
 
-        # Generate a unique color for the landmark index
-        color = get_color_for_index(i)
+            # Ensure coordinates are within bounds
+            if 0 <= x < w and 0 <= y < h:
+                # Generate a unique color for the landmark index
+                color = get_color_for_index(i)
 
-        # Directly set the color of the pixel corresponding to the landmark
-        blank[y, x] = color  # Set the pixel at (x, y) to the generated color
+                # Set a small circle around the landmark (radius 1 pixels)
+                cv2.circle(blank, (x, y), 1, color, -1)  # -1 fills the circle
     return blank
 
 
