@@ -3,12 +3,13 @@ from pathlib import Path
 import cv2
 from PIL import Image
 from typing import Callable
+import numpy as np
 
 VALID_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".tiff"}
 
 class PrivatizationRunner():
 
-    def __init__(self, in_path : str, out_path : str, privatization, useCV : False) -> None:
+    def __init__(self, in_path : str, out_path : str, privatization : list, useCV : False) -> None:
         self.in_path = in_path
         self.out_path = out_path
         self.privatization = privatization
@@ -25,7 +26,11 @@ class PrivatizationRunner():
                         print(f"Skipping non-image file: {file_path}")
                     continue
                 # process
-                out_img = self.privatization(str(file_path))
+                out_img = np.array(Image.open(str(file_path)))
+                if self.useCV:
+                    out_img = cv2.cvtColor(out_img, cv2.COLOR_RGB2BGR)
+                for method in self.privatization:
+                    out_img = method(out_img)
                 # handle output file path stuff
                 rel_path = file_path.relative_to(self.in_path)
                 new_filename = f"{file_path.stem}_out{file_path.suffix}"
