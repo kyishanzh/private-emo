@@ -73,8 +73,8 @@ def blur(image, blur_ksize = (5, 5)):
 #     #print("postclip",img_out)
 #     return Image.fromarray(img_out)
 
-out_dir = "data/blur_quantize"
+out_dir = "CelebA_Quantized"
 
-runner = PrivatizationRunner(fer_dir, out_dir, [blur, quantize], useCV = True)
+runner = PrivatizationRunner(celebA_dir, out_dir, [blur, quantize], useCV = True)
 
 runner.run()
